@@ -1,5 +1,5 @@
 # ═══════════════════════════════════════════════════════════════════════════════
-#  NEAM Stock Processor — Streamlit Web App  v2.2
+#  dynamice Stock Processor — Streamlit Web App  v2.2
 # ═══════════════════════════════════════════════════════════════════════════════
 
 import os, io, datetime
@@ -16,9 +16,9 @@ from reportlab.lib.units import cm
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 
-APP_NAME   = "NEAM Stock Processor"
+APP_NAME   = "dynamice Stock Processor"
 APP_VER    = "v2.2"
-FOOTER_TXT = "Neam"
+FOOTER_TXT = "dynamice"
 
 # ═══════════════════════════════════════════════════════════════════════════════
 #  ١. منطق المعالجة — بدون تغيير
@@ -589,7 +589,7 @@ if run_btn or st.session_state.get('processed'):
     # ── تصدير Excel ──────────────────────────────────────────────────────────
     st.subheader("④ تصدير Excel")
     xl_bytes = build_excel_bytes(r, show_stock, show_issued, show_level)
-    fname_xl = f"NEAM_Stock_{r['now'].strftime('%Y%m%d_%H%M%S')}.xlsx"
+    fname_xl = f"dynamice_Stock_{r['now'].strftime('%Y%m%d_%H%M%S')}.xlsx"
     st.download_button(
         label="⬇ تحميل Excel",
         data=xl_bytes,
@@ -672,7 +672,7 @@ if run_btn or st.session_state.get('processed'):
             r['source_files'], r['now'],
             is_stock=(typ == 'stock'))
 
-        fname_pdf = f"NEAM_{label.replace(' ','_')}_{r['now'].strftime('%Y%m%d_%H%M%S')}.pdf"
+        fname_pdf = f"dynamice_{label.replace(' ','_')}_{r['now'].strftime('%Y%m%d_%H%M%S')}.pdf"
         st.download_button(
             label=f"⬇ PDF — {label}",
             data=pdf_bytes,
